@@ -1,0 +1,7 @@
+[user]
+	email = frankkim1108@naver.com
+	name = Kim JongWook
+[push]
+	default = matching
+[core]
+	editor = nano
