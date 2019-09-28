@@ -33,5 +33,14 @@
     <ClCompile Include="BOJ16397.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
+    <ClCompile Include="BOJ16397%28ANS%29.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BOJ1541.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="BOJ1389.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
