@@ -1,71 +1,32 @@
-#include <iostream>
-#include <vector>
+#include<iostream>
+#include<map>
 using namespace std;
-
-vector <int> in[5000];
-vector <int> nodes;
-
-
-bool firstrule() {
-	int count = 0;
-	for (int i = 0; i < nodes.size(); i++) {
-		if (in[nodes[i]].size() == 0)
-			count++;
-	}
-	if (count == 1)
-		return true;
-	else return false;
-}
-bool secondrule() {
-	for (int i = 0; i < nodes.size(); i++) {
-		if (in[nodes[i]].size() >= 2)
-			return false;
-		else continue;
-	}
-	return true;
-}
-
-int main()
-{
-	int i = 1;
-
-	while (1) {
-		bool flag[5000] = { false, };
-		while (1) {
-			int start;
-			int end;
-			cin >> start >> end;
-			if (start == -1 && end == -1) {
-				return 0;
-			}
-			else if (start != 0 || end != 0) {
-				in[end].push_back(start);
-				if (!flag[start]) {
-					nodes.push_back(start);
-					flag[start] = true;
-				}
-				if (!flag[end]) {
-					nodes.push_back(end);
-					flag[end] = true;
-				}
-			}
-			else {
-				if (firstrule() && secondrule()) {
-					cout << "Case " << i << " is a tree.\n";
-					break;
-				}
-
-				else {
-					cout << "Case " << i << " is not a tree.\n";
-					break;
-				}
-			}
+int main() {
+	ios::sync_with_stdio(false);
+	cin.tie(NULL);
+	long long int par, chi;
+	int case_num = 1;
+	while (cin >> par >> chi) {
+		map<long long int, int> inner;
+		bool is_tree = true;
+		int inner_zero_count = 0;
+		if (par == -1 && chi == -1) break;
+		while (par && chi) {
+			inner[par];
+			++inner[chi];
+			cin >> par >> chi;
 		}
-		i++;
-		for (int i = 0; i < 5000; i++) {
-			in[i].clear();
+		for (auto i : inner) {
+			if (i.second > 1) is_tree = false;
+			if (!i.second) inner_zero_count++;
 		}
-		nodes.clear();
-		
+		if (inner_zero_count != 1 && !inner.empty()) is_tree = false;
+		if (is_tree) {
+			cout << "Case " << case_num << " is a tree.\n";
+		}
+		else {
+			cout << "Case " << case_num << " is not a tree.\n";
+		}
+		case_num++;
 	}
 }

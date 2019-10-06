@@ -12,6 +12,9 @@ bool visited[10001];
 int x = 0;
 int farpoint = 0;
 void dfs(int start, int distance) {
+	if (visited[start] == true)
+		return;
+	else
 	visited[start] = true;
 
 	if (x < distance) {
@@ -20,9 +23,6 @@ void dfs(int start, int distance) {
 	}
 
 	for (int i = 0; i < graph[start].size(); i++) {
-		if (visited[graph[start][i].first] == true)
-			continue;
-		else
 			dfs(graph[start][i].first, graph[start][i].second + distance);
 		}
 			
@@ -44,7 +44,9 @@ int main() {
 	}
 
 	dfs(1, 0);
-	memset(visited, 0, sizeof(visited));
+	for (int i = 0; i < 10001; i++) {
+		visited[i] = 0;
+	}
 	x = 0;
 	dfs(farpoint, x);
 	
