@@ -1,9 +1,6 @@
 #include <iostream>
 #include <queue>
-#include <algorithm>
 using namespace std;
-
-
 
 int main()
 {
@@ -13,7 +10,7 @@ int main()
 		for (int j = 0; j < 6; j++) {
 			space[i][j] = 101;
 		}
-	queue < pair< pair<int, int>, int> > oil;
+	queue < pair< pair<int, int>, int> > position;
 	queue < int > oilprice;
 	int N, M;
 	cin >> N >> M;
@@ -25,36 +22,36 @@ int main()
 	}
 
 	for (int i = 0; i < M; i++) {
-		oil.push({ {0 , i}, 0 });
+		position.push({ {0 , i}, 0 });
 		oilprice.push(space[0][i]);
 	}
 
-	while (!oil.empty()) {
+	while (!position.empty()) {
 
-		int size = oil.size();
+		int size = position.size();
 		
 		if (count == N - 1)
 			break;
 		for (int i = 0; i < size; i++) {
 			int top = oilprice.front();
-			int path = oil.front().second;
-			int r = oil.front().first.first;
-			int c = oil.front().first.second;
-			oil.pop();
+			int path = position.front().second;
+			int r = position.front().first.first;
+			int c = position.front().first.second;
+			position.pop();
 			oilprice.pop();
 			if (r + 1 < N && c - 1 >= 0 && path != 1)
 			{
-				oil.push({ {r + 1, c - 1}, 1 });
+				position.push({ {r + 1, c - 1}, 1 });
 				oilprice.push(space[r + 1][ c - 1] + top);
 				
 			}
 			if (r + 1 < N && path != 2)
 			{
-				oil.push({ { r + 1, c}, 2 });
+				position.push({ { r + 1, c}, 2 });
 				oilprice.push(space[r + 1][c] + top);
 			}
 			if (r + 1 < N && c + 1 < M && path != 3) {
-				oil.push({ { r + 1, c + 1}, 3 });
+				position.push({ { r + 1, c + 1}, 3 });
 				oilprice.push(space[r + 1][c + 1] +top);
 			}
 		}
