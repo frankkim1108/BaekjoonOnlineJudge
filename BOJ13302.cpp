@@ -24,7 +24,7 @@ int main(void) {
 
 	dp[0][0] = 0;
 	for (int i = 0; i <= n; i++) {
-		for (int j = 0; j <= i; j++) { //i번째 날 j개의 쿠폰
+		for (int j = 0; j <= i; j++) {
 			if (dp[i][j] == INF)continue;
 			int now = dp[i][j];
 
