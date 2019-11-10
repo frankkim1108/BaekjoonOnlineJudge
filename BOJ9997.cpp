@@ -26,8 +26,6 @@ int main(void)
 	cin >> N;
 	for (int i = 0; i < 26; i++) com |= 1 << i;
 
-	cout << com;
-
 	for (int i = 0; i < N; i++)
 	{
 		cin >> A;
